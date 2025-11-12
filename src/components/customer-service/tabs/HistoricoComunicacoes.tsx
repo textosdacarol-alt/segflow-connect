@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import { MessageSquare, Mail, Paperclip, Plus } from "lucide-react";
 
 const comunicacoes = [
@@ -39,6 +40,8 @@ const comunicacoes = [
 ];
 
 export const HistoricoComunicacoes = () => {
+  const navigate = useNavigate();
+  
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -88,11 +91,18 @@ export const HistoricoComunicacoes = () => {
             <CardContent>
               <p className="text-sm mb-3">{item.mensagem}</p>
               {item.anexos > 0 && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                   <Paperclip className="h-4 w-4" />
                   <span>{item.anexos} anexo{item.anexos > 1 ? 's' : ''}</span>
                 </div>
               )}
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => navigate(`/atendimento/comunicacoes/${item.id}`)}
+              >
+                Ver Detalhes
+              </Button>
             </CardContent>
           </Card>
         ))}

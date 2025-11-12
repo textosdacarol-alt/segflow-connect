@@ -1,7 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ResumoCliente } from "./tabs/ResumoCliente";
-import { HistoricoSolicitacoes } from "./tabs/HistoricoSolicitacoes";
-import { HistoricoComunicacoes } from "./tabs/HistoricoComunicacoes";
 import { HistoricoOfertas } from "./tabs/HistoricoOfertas";
 import { ApolicesAtivas } from "./tabs/ApolicesAtivas";
 import { ApolicesInativas } from "./tabs/ApolicesInativas";
@@ -16,9 +15,21 @@ interface CustomerTabsProps {
 }
 
 export const CustomerTabs = ({ activeTab, onTabChange }: CustomerTabsProps) => {
+  const navigate = useNavigate();
+  
+  const handleTabClick = (value: string) => {
+    if (value === "solicitacoes") {
+      navigate("/atendimento/solicitacoes");
+    } else if (value === "comunicacoes") {
+      navigate("/atendimento/comunicacoes");
+    } else {
+      onTabChange(value);
+    }
+  };
+
   return (
     <div className="container mx-auto px-6 py-6">
-      <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
+      <Tabs value={activeTab} onValueChange={handleTabClick} className="w-full">
         <TabsList className="w-full justify-start flex-wrap h-auto bg-muted p-1 gap-1">
           <TabsTrigger value="resumo" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             Resumo do Cliente
@@ -55,12 +66,6 @@ export const CustomerTabs = ({ activeTab, onTabChange }: CustomerTabsProps) => {
         <div className="mt-6">
           <TabsContent value="resumo">
             <ResumoCliente />
-          </TabsContent>
-          <TabsContent value="solicitacoes">
-            <HistoricoSolicitacoes />
-          </TabsContent>
-          <TabsContent value="comunicacoes">
-            <HistoricoComunicacoes />
           </TabsContent>
           <TabsContent value="ofertas">
             <HistoricoOfertas />

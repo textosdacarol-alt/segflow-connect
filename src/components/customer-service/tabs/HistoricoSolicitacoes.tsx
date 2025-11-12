@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 import { Search, FileText, AlertCircle, Clock, CheckCircle } from "lucide-react";
 
 const solicitacoes = [
@@ -54,6 +55,8 @@ const solicitacoes = [
 ];
 
 export const HistoricoSolicitacoes = () => {
+  const navigate = useNavigate();
+  
   const getStatusBadge = (status: string, tipo: string) => {
     if (tipo === "reclamacao") {
       return <Badge className="bg-status-alert">Reclamação Aberta</Badge>;
@@ -153,7 +156,13 @@ export const HistoricoSolicitacoes = () => {
                 </div>
               )}
               <div className="flex gap-2">
-                <Button variant="outline" size="sm">Ver Detalhes</Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => navigate(`/atendimento/solicitacoes/${item.id}`)}
+                >
+                  Ver Detalhes
+                </Button>
                 {item.tipo === "reclamacao" && (
                   <Button variant="default" size="sm" className="bg-primary">
                     Reiterar
