@@ -18,10 +18,20 @@ export const CustomerTabs = ({ activeTab, onTabChange }: CustomerTabsProps) => {
   const navigate = useNavigate();
   
   const handleTabClick = (value: string) => {
-    if (value === "solicitacoes") {
-      navigate("/atendimento/solicitacoes");
-    } else if (value === "comunicacoes") {
-      navigate("/atendimento/comunicacoes");
+    const routeMap: { [key: string]: string } = {
+      "solicitacoes": "/atendimento/solicitacoes",
+      "comunicacoes": "/atendimento/comunicacoes",
+      "ofertas": "/atendimento/ofertas",
+      "apolices-ativas": "/atendimento/apolices-ativas",
+      "apolices-inativas": "/atendimento/apolices-inativas",
+      "assistencias": "/atendimento/assistencias",
+      "sinistros": "/atendimento/sinistros",
+      "nps": "/atendimento/nps",
+      "reclamacoes": "/atendimento/reclamacoes"
+    };
+
+    if (routeMap[value]) {
+      navigate(routeMap[value]);
     } else {
       onTabChange(value);
     }
