@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import logo from "@/assets/bb-seguros-logo.jpg";
 
 export const CustomerHeader = () => {
   const navigate = useNavigate();
@@ -23,6 +24,17 @@ export const CustomerHeader = () => {
 
   return (
     <header className="bg-primary text-primary-foreground shadow-md sticky top-0 z-50">
+      <div className="border-b border-primary-foreground/20 bg-primary">
+        <div className="container mx-auto px-6 py-3">
+          <div className="flex items-center gap-4">
+            <img src={logo} alt="BB Seguros" className="h-10 w-auto" />
+            <div>
+              <h2 className="text-lg font-bold">Central de Atendimento</h2>
+              <p className="text-xs text-primary-foreground/80">Sistema de Gestão de Clientes</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex-1">
