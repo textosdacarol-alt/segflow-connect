@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ResumoCliente } from "./tabs/ResumoCliente";
 import { HistoricoOfertas } from "./tabs/HistoricoOfertas";
+import { HistoricoDocumentos } from "./tabs/HistoricoDocumentos";
 import { ApolicesAtivas } from "./tabs/ApolicesAtivas";
 import { ApolicesInativas } from "./tabs/ApolicesInativas";
 import { Assistencias } from "./tabs/Assistencias";
@@ -21,6 +22,7 @@ export const CustomerTabs = ({ activeTab, onTabChange }: CustomerTabsProps) => {
     const routeMap: { [key: string]: string } = {
       "solicitacoes": "/atendimento/solicitacoes",
       "comunicacoes": "/atendimento/comunicacoes",
+      "documentos": "/atendimento/documentos",
       "ofertas": "/atendimento/ofertas",
       "apolices-ativas": "/atendimento/apolices-ativas",
       "apolices-inativas": "/atendimento/apolices-inativas",
@@ -50,6 +52,9 @@ export const CustomerTabs = ({ activeTab, onTabChange }: CustomerTabsProps) => {
           <TabsTrigger value="comunicacoes" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             Histórico de Comunicações
           </TabsTrigger>
+          <TabsTrigger value="documentos" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            Histórico de Documentos
+          </TabsTrigger>
           <TabsTrigger value="ofertas" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
             Histórico de Ofertas
           </TabsTrigger>
@@ -76,6 +81,9 @@ export const CustomerTabs = ({ activeTab, onTabChange }: CustomerTabsProps) => {
         <div className="mt-6">
           <TabsContent value="resumo">
             <ResumoCliente />
+          </TabsContent>
+          <TabsContent value="documentos">
+            <HistoricoDocumentos />
           </TabsContent>
           <TabsContent value="ofertas">
             <HistoricoOfertas />
