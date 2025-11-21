@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import CustomerService from "./pages/CustomerService";
 import HistoricoSolicitacoesPage from "./pages/HistoricoSolicitacoesPage";
 import HistoricoComunicacoesPage from "./pages/HistoricoComunicacoesPage";
+import HistoricoDocumentosPage from "./pages/HistoricoDocumentosPage";
 import HistoricoOfertasPage from "./pages/HistoricoOfertasPage";
 import ApolicesAtivasPage from "./pages/ApolicesAtivasPage";
 import ApolicesInativasPage from "./pages/ApolicesInativasPage";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/atendimento/solicitacoes" element={<HistoricoSolicitacoesPage />} />
           <Route path="/atendimento/solicitacoes/:id" element={<SolicitacaoDetalhes />} />
           <Route path="/atendimento/comunicacoes" element={<HistoricoComunicacoesPage />} />
+          <Route path="/atendimento/documentos" element={<HistoricoDocumentosPage />} />
           <Route path="/atendimento/comunicacoes/:id" element={<ComunicacaoDetalhes />} />
           <Route path="/atendimento/ofertas" element={<HistoricoOfertasPage />} />
           <Route path="/atendimento/apolices-ativas" element={<ApolicesAtivasPage />} />
